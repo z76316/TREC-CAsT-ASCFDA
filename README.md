@@ -55,19 +55,19 @@ In T5-CQR, we fine-tuned the sequence-to-sequence model T5 with the [CANARD](htt
 
 After that, retrieve it with the BM25.
 
-# SER:
+### SER:
 In this section, we separate the retrieved documents of the last part into sentences and use [doc2query](https://github.com/nyu-dl/dl4ir-doc2query) to get the potential query for each sentence.
 Here, [docTTTTTquery](https://github.com/castorini/docTTTTTquery) is a better version than doc2query and even easier to use. Therefore, we apply docTTTTTquery here rather than doc2query.
 
 The potential queries of each sentence are used to measure the closeness between the 
 sentence and the CQR-query, while the sentence near CQR-query will be appended to it to add supplement information.
 
-# Rerank:
+### Rerank:
 We rerank the SER-retrieved passages with **CQR-query** and the T5-reranker fine-tuned with [MSMARCO-Passage-Ranking](https://github.com/microsoft/MSMARCO-Passage-Ranking)
 
-# Pipeline:
+### Pipeline:
 After indexing the corpus, one has to run ```construct_d2q.py``` and ```construct_q_dense_index.py``` to get the d2q-potential query embeddings for the SER step.
 Once finished, run ```main.py``` to go through the CQR, SER retrieval, and reranking.
 
-# TODO:
+### TODO:
 evaluation with TREC CAsT 2019
