@@ -66,6 +66,10 @@ sentence and the CQR-query, while the sentence near CQR-query will be appended t
 # Rerank:
 We rerank the SER-retrieved passages with **CQR-query** and the T5-reranker fine-tuned with [MSMARCO-Passage-Ranking](https://github.com/microsoft/MSMARCO-Passage-Ranking)
 
+# Pipeline:
+After indexing the corpus, one has to run ```construct_d2q.py``` and ```construct_q_dense_index.py``` to get the d2q-potential query embeddings for the SER step.
+Once finished, run ```main.py``` to go through the while CQR, SER retrieval and rerank.
+
 # TODO:
 evaluation with TREC CAsT 2019
 
