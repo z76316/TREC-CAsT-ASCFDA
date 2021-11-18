@@ -16,27 +16,34 @@ You should install Java 11 first, and follow the instructions of installing:
 2. [Chatty Goose](https://github.com/castorini/chatty-goose)
 3. [PyGaggle](https://github.com/castorini/pygaggle)
 
-Python >= 3.7
+**Python >= 3.7**
 
 ### Data Preprocessing:
 Download/Construct the corpus first (Ex: [MSMARCO-Passage-Ranking](https://github.com/microsoft/MSMARCO-Passage-Ranking)), preprocess it into the MS MARCO tsv collctions type:
+
     ```
     <pid><\t><text>
     ```
+    
 or jsonl type that fits the [pyserini](https://github.com/castorini/pyserini):
+
     ```
     {
     "id": "doc1",
     "contents": "this is the contents."
     }
     ```
+    
 We use the MS MARCO tsv collctions type in test data here, convert it to the jsonl format first:
+
     ```
     python ./anserini/tools/scripts/msmarco/convert_collection_to_jsonl.py \
             --collection-path ./test_data/small_collection.tsv \
             --output-folder ./test_data_jsonl
     ```
+    
 Then index it with the pyserini:
+
     ```
     python -m pyserini.index -collection JsonCollection \
                          -generator DefaultLuceneDocumentGenerator \
@@ -45,6 +52,7 @@ Then index it with the pyserini:
                          -index indexes/sample_collection_jsonl \
                          -storePositions -storeDocvectors -storeRaw
     ```
+    
 The index step will be done multiple times
 
 We finished the indexing here, can starting from each step then.
