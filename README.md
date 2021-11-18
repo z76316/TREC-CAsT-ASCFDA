@@ -2,9 +2,9 @@
 
 This repo is to reproduce the [ASCFDA-CAsT-2020](https://trec.nist.gov/pubs/trec29/papers/ASCFDA.C.pdf) pipelines.
 
-For the original version is most deployed on TPU & GCP with cumbersome T5 source code, we reimplemented in a 2021-style in an easier and cleaner way. Great thanks to the wonderful tools developed [castorini lab](https://github.com/castorini), one of the world's best Information Retrieval Labs. 
+Because the original version is most deployed on TPU & GCP with cumbersome T5 source code, we reimplemented it in a 2021-style in an easier and cleaner way. Great thanks to the wonderful tools developed [castorini lab](https://github.com/castorini), one of the world's best Information Retrieval Labs. 
 
-The method propose in [ASCFDA-CAsT-2020](https://trec.nist.gov/pubs/trec29/papers/ASCFDA.C.pdf) can be separated into 3 parts:
+The method proposed in [ASCFDA-CAsT-2020](https://trec.nist.gov/pubs/trec29/papers/ASCFDA.C.pdf) can be separated into 3 parts:
 
 1. T5-CQR: Coreference Query Rewriting by T5
 2. SER: Semantic-based Ellipsis Reduction
@@ -50,6 +50,7 @@ While finishing the indexing here, one can start from each step then.
 ### T5-CQR
 
 In T5-CQR, we fine-tuned the sequence-to-sequence model T5 with the [CANARD](https://sites.google.com/view/qanta/projects/canard) dataset to rewrite the queries and replace the pronoun with the original subject. This method is reimplemented by [Chatty Goose](https://github.com/castorini/chatty-goose) in their NTR module, and we will use their pre-trained version here.
+
 (To fine-tune T5 on a custom dataset, please use (T5-huggingface)[https://huggingface.co/transformers/model_doc/t5.html]) to build a new one and reload to the Chatty-Goose settings.
 
 After that, retrieve it with the BM25.
@@ -70,25 +71,3 @@ Once finished, run ```main.py``` to go through the CQR, SER retrieval, and reran
 
 # TODO:
 evaluation with TREC CAsT 2019
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
