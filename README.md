@@ -2,7 +2,7 @@
 
 This repo is to reproduce the [ASCFDA-CAsT-2020](https://trec.nist.gov/pubs/trec29/papers/ASCFDA.C.pdf) pipelines.
 
-For the original version of code are most deployed on TPU & GCP with cumbersome T5 source code, so we reimplemented in a 2021-style with the wonderful tools from [castorini lab](https://github.com/castorini), which is one of the best Information Retrieval Labs in the world. This version is much easier and clean than the original version. 
+For the original version is most deployed on TPU & GCP with cumbersome T5 source code, we reimplemented in a 2021-style in an easier and cleaner way. Great thanks to the wonderful tools developed [castorini lab](https://github.com/castorini), one of the world's best Information Retrieval Labs. 
 
 The method propose in [ASCFDA-CAsT-2020](https://trec.nist.gov/pubs/trec29/papers/ASCFDA.C.pdf) can be separated into 3 parts:
 
@@ -11,7 +11,7 @@ The method propose in [ASCFDA-CAsT-2020](https://trec.nist.gov/pubs/trec29/paper
 3. T5-Rerank: passage Rerank by T5
 
 ### Installation:
-You should install Java 11 first, and follow the instructions of installing:
+You should install Java 11 first and follow the instructions for installing:
 1. [Anserini](https://github.com/castorini/anserini)
 2. [Chatty Goose](https://github.com/castorini/chatty-goose)
 3. [PyGaggle](https://github.com/castorini/pygaggle)
@@ -44,21 +44,19 @@ Then index it with the pyserini:
                          -input ./test_data_jsonl \
                          -index indexes/sample_collection_jsonl \
                          -storePositions -storeDocvectors -storeRaw
-    
-The index step will be done multiple times
 
-We finished the indexing here, can starting from each step then.
+While finishing the indexing here, one can start from each step then.
 
 ### T5-CQR
 
-In T5-CQR, we fine-tuned the sequence-to-sequence model T5 with the [CANARD](https://sites.google.com/view/qanta/projects/canard) dataset to rewrite the queries and replace the pronoun with the original subject. This method are reimplemented by [Chatty Goose](https://github.com/castorini/chatty-goose) in their NTR module, we will use their pre-trained version here.
-(To fine-tune T5 on your own dataset, please use (T5-huggingface)[https://huggingface.co/transformers/model_doc/t5.html]) to build a new one and reload to the Chatty-Goose settings.
+In T5-CQR, we fine-tuned the sequence-to-sequence model T5 with the [CANARD](https://sites.google.com/view/qanta/projects/canard) dataset to rewrite the queries and replace the pronoun with the original subject. This method is reimplemented by [Chatty Goose](https://github.com/castorini/chatty-goose) in their NTR module, and we will use their pre-trained version here.
+(To fine-tune T5 on a custom dataset, please use (T5-huggingface)[https://huggingface.co/transformers/model_doc/t5.html]) to build a new one and reload to the Chatty-Goose settings.
 
-After that retrieve it with the BM25.
+After that, retrieve it with the BM25.
 
 # SER:
-In this section, we separate the retrieved documents of last part into sentences and use [doc2query](https://github.com/nyu-dl/dl4ir-doc2query) to get the potential query for each sentence.
-Here, [docTTTTTquery](https://github.com/castorini/docTTTTTquery) is a better version than doc2query and even easier to use. Therefore, we apply docTTTTTquery here rather than doc2query here.
+In this section, we separate the retrieved documents of the last part into sentences and use [doc2query](https://github.com/nyu-dl/dl4ir-doc2query) to get the potential query for each sentence.
+Here, [docTTTTTquery](https://github.com/castorini/docTTTTTquery) is a better version than doc2query and even easier to use. Therefore, we apply docTTTTTquery here rather than doc2query.
 
 The potential queries of each sentence are used to measure the closeness between the 
 sentence and the CQR-query, while the sentence near CQR-query will be appended to it to add supplement information.
@@ -68,7 +66,7 @@ We rerank the SER-retrieved passages with **CQR-query** and the T5-reranker fine
 
 # Pipeline:
 After indexing the corpus, one has to run ```construct_d2q.py``` and ```construct_q_dense_index.py``` to get the d2q-potential query embeddings for the SER step.
-Once finished, run ```main.py``` to go through the while CQR, SER retrieval and rerank.
+Once finished, run ```main.py``` to go through the CQR, SER retrieval, and reranking.
 
 # TODO:
 evaluation with TREC CAsT 2019
