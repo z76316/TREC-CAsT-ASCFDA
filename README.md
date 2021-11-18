@@ -1,10 +1,10 @@
 # TREC-CAsT-ASCFDA
 
-This repo is to reproduce the [ASCFDA-CAsT-2020] (https://trec.nist.gov/pubs/trec29/papers/ASCFDA.C.pdf) pipelines.
+This repo is to reproduce the [ASCFDA-CAsT-2020](https://trec.nist.gov/pubs/trec29/papers/ASCFDA.C.pdf) pipelines.
 
 For the original version of code are most deployed on TPU & GCP with cumbersome T5 source code, so we reimplemented in a 2021-style with the wonderful tools from [castorini lab](https://github.com/castorini), which is one of the best Information Retrieval Labs in the world.
 
-The method propose in [ASCFDA-CAsT-2020] (https://trec.nist.gov/pubs/trec29/papers/ASCFDA.C.pdf) can be separated into 3 parts:
+The method propose in [ASCFDA-CAsT-2020](https://trec.nist.gov/pubs/trec29/papers/ASCFDA.C.pdf) can be separated into 3 parts:
 
 1. T5-CQR: Coreference Query Rewriting by T5
 2. SER: Semantic-based Ellipsis Reduction
