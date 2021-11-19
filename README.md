@@ -51,7 +51,7 @@ While finishing the indexing here, one can start from each step then.
 
 In T5-CQR, we fine-tuned the sequence-to-sequence model T5 with the [CANARD](https://sites.google.com/view/qanta/projects/canard) dataset to rewrite the queries and replace the pronoun with the original subject. This method is reimplemented by [Chatty Goose](https://github.com/castorini/chatty-goose) in their NTR module, and we will use their pre-trained version here.
 
-(To fine-tune T5 on a custom dataset, please use (T5-huggingface)[https://huggingface.co/transformers/model_doc/t5.html]) to build a new one and reload to the Chatty-Goose settings.
+(To fine-tune T5 on a custom dataset, please use [huggingface-T5](https://huggingface.co/transformers/model_doc/t5.html) to build a new one and reload to the Chatty-Goose settings.
 
 After that, retrieve it with the BM25.
 
