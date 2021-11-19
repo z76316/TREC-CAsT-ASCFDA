@@ -45,7 +45,6 @@ with open(args.potential_q) as fp:
         line = line.strip("\n")
         p_id, sentence, p_q = line.split("\t")
         ser_sentences.append((p_id, sentence))
-        # sentence_list.append(sentence)
         
 def cos_sim(a, b): # 1D, 1D
     return np.sum(a*b)/max(np.sum(a*a)*np.sum(b*b), 0.000000001) 
@@ -107,6 +106,5 @@ with open(args.queries, "r") as fp_in:
             reranked = reranker.rerank(cqr_query, texts)
             for i in range(args.r2):
                 fp_out.write(f"{q_id}\t{reranked[i].metadata['docid']}\t{reranked[i].text}")
-                # print(f'{i+1:2} {reranked[i].metadata["docid"]} {reranked[i].score:.5f} {reranked[i].text}')
             
         
