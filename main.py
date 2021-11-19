@@ -74,7 +74,6 @@ with open(args.queries, "r") as fp_in:
             historical_queries.append(text)
             merged_text = "|||".join(historical_queries)
             rewritten_query = ntr.rewrite(merged_text)
-            fp_out.write(f"{q_id}\t{rewritten_query}\n")
             
             # stage 1 retrieve
             print("stage 1 retrieve")
