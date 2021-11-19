@@ -16,7 +16,7 @@ You should install Java 11 first and follow the instructions for installing:
 2. [Chatty Goose](https://github.com/castorini/chatty-goose)
 3. [PyGaggle](https://github.com/castorini/pygaggle)
 
-**Python >= 3.7**
+**Python == 3.7**
 
 ### Data Preprocessing:
 Download/Construct the corpus first (Ex: [MSMARCO-Passage-Ranking](https://github.com/microsoft/MSMARCO-Passage-Ranking)), preprocess it into the MS MARCO tsv collctions type:
