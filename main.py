@@ -75,13 +75,11 @@ with open(args.queries, "r") as fp_in:
             rewritten_query = ntr.rewrite(merged_text)
             
             # stage 1 retrieve
-            print("stage 1 retrieve")
             cqr_query = Query(rewritten_query)
             stage_1_hits = searcher.search(cqr_query.text, k=args.r1)
             stage_1_doc_ids = [h.docid for h in stage_1_hits]
             
             # stage 2 retrieve
-            print("stage 2 retrieve")
             cqr_query_embed = ser_model.encode(cqr_query.text)
             h_query_match = []
             if len(historical_queries) > 0:
@@ -101,7 +99,6 @@ with open(args.queries, "r") as fp_in:
             stage_2_doc_ids = [h.docid for h in stage_2_hits]
             
             # rerank
-            print("rerank")
             texts = hits_to_texts(stage_2_hits)
             reranked = reranker.rerank(cqr_query, texts)
             for i in range(args.r2):
