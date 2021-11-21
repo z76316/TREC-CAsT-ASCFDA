@@ -1,0 +1,9 @@
+{
+    "model_name": "castorini/t5-base-canard", 
+    "lr": 1e-3, 
+    "max_input_len": 512, 
+    "max_label_len": 64, 
+    "train_epoch": 2,
+    "device": "cuda:1", 
+    "batch_size": 64
+}
