@@ -6,10 +6,9 @@ from torch.utils.data import Dataset, DataLoader
 from dataset import t5_generation_dataset, collate_base
 from functools import partial
 from torch import nn, optim
-from tqdm import tqdm
 import os 
 
-parser = argparse.ArgumentParser(description='Process some integers.')
+parser = argparse.ArgumentParser(description='train canard.')
 parser.add_argument('--data_path')
 parser.add_argument('--config_path')
 args = parser.parse_args()
