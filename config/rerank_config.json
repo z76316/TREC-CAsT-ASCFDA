@@ -1,0 +1,11 @@
+{
+    "model_name": "castorini/monot5-base-msmarco", 
+    "lr": 1e-3, 
+    "max_input_len": 512, 
+    "max_label_len": 2,
+    "train_epoch": 2,
+    "device": "cuda:1", 
+    "batch_size": 32, 
+    "data_split": 10000, 
+    "model_output_path": "./fine-tuned-t5-msmarco"
+}
