@@ -24,7 +24,7 @@ labels = []
 for each_query in tqdm(data):
     # order: metadata ||| ... ||| query to rewrite
     merged_inputs.append("|||".join(each_query["History"] + [each_query["Question"]]))
-    labels.append("What group disbanded?")
+    labels.append(each_query["Rewrite"])
 
     
 # model
